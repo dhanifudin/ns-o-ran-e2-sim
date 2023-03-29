@@ -186,6 +186,7 @@ int E2Sim::run_loop(std::string server_ip, uint16_t server_port, uint16_t local_
         while (SignalHandler::isRunning()) //constantly looking for data on SCTP interface
         {
             if (sctp_receive_data(client_fd, data_buf) <= 0)
+                LOG_I("[SCTP] Can't receive data sctp_receive_data");
                 break;
 
             LOG_D("[SCTP] Received new data of size %d", data_buf.len);
